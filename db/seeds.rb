@@ -44,7 +44,7 @@ def make_lessons
     name = Faker::Lorem.sentence(1)
     num_learned = (10)
     category_id = Random.new.rand(1..5)
-    lesson = Lesson.create!(user_id: user_id, name: name, num_learned: num_learned, category_id: category_id)
+    lesson = Lesson.create!(user_id: user_id, name: name, category_id: category_id)
   end
 end
 
@@ -61,16 +61,6 @@ def make_word_answers
       correct = 0
       word.word_answers.create!(content: content, correct: correct)
     end
-  end
-end
-
-def make_user_answers
-  user_id = 1
-  10.times do |n|
-    word_id = Random.new.rand(200)
-    answer = Faker::Lorem.word
-    lesson_id = Random.new.rand(1..10)
-    UserWord.create!(user_id: user_id, word_id: word_id, answer: answer, lesson_id: lesson_id)
   end
 end
 
@@ -91,6 +81,5 @@ make_categories
 make_words
 make_word_answers
 # make_lessons
-# make_user_answers
 # make_lesson_words
 
