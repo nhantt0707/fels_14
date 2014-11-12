@@ -1,12 +1,11 @@
 Rails.application.routes.draw do
 
-  resources :categories, only: [:index]
+  resources :categories, only: [:index, :show]
   resources :words, only: [:index]
-  resources :lessons, except: [:destroy, :index]
-  resources :user_words, only: [:new, :create, :edit, :update]
-  
+  resources :lessons
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
+  
   match "/signup", to: "users#new", via: :get
   match "/signin", to: "sessions#new", via: :get
   match "/signout", to: "sessions#destroy", via: :delete

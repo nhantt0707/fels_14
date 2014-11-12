@@ -1,0 +1,10 @@
+<h1><%= @category.name %> </h1>
+
+<div class = "col-md-12">
+    <% @words.each do |word| %>
+        <div class = "row" id = "<%= word.id %>">
+            <%= link_to word.english, "javascript:void(0);" %>    
+        </div>
+        <hr />
+    <% end%>
+</div>

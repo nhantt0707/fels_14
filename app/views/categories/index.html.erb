@@ -1,9 +1,13 @@
-<h1>List of lessons</h1>
-<% @lessons.each do |lesson| %>
+<h1>List of Category</h1>
+
+<%= will_paginate %>
+
+<% @categories.each do |category| %>
     <div class = "row">
-        <h3><%= lesson.name %></h3>
-        <p><i>You have learned <%= lesson.num_learned %>/20</i></p>
+        <%= link_to category.name, category %>
+        <%= link_to "Start", new_lesson_path(category_id: category.id), class: "btn btn-primary" %>
     </div>
-    <%= link_to "Start", lesson, class: "btn btn-primary" %>
     <hr />
 <% end %>
+
+<%= will_paginate %>
