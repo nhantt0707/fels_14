@@ -19,6 +19,7 @@ class User < ActiveRecord::Base
   has_many :followers, through: :reverse_relationships, source: :follower
   has_many :lessons
   has_many :user_words
+  has_many :activities
   
   def User.new_remember_token
     SecureRandom.urlsafe_base64

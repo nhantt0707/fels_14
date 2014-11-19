@@ -37,6 +37,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find params[:id]
+    @activities = @user.activities.order("DATE(created_at) DESC").limit 20
   end
 
   protected

@@ -1,0 +1,7 @@
+<% @activities.each do |activity| %>
+    <div class = "row well">
+        You learned a <%= link_to "lesson", activity.lesson %> in category 
+        <%= link_to activity.lesson.category.name,  activity.lesson.category %>
+        <%= activity.created_at.strftime("at %I:%M%p on %m/%d/%Y") %>
+    </div>
+<% end %>
