@@ -6,13 +6,14 @@ class LessonsController < ApplicationController
   end
   
   def new
-    @lesson = Lesson.new(category_id: params[:category_id], user_id: current_user.id, name: Faker::Lorem.sentence)
+    @lesson = Lesson.new(category_id: params[:category_id],
+      user_id: current_user.id, name: Faker::Lorem.sentence)
     @words = @lesson.category.words.order("RAND()").limit 20
     @words.each do |word|
-      @lesson.lesson_words.build word_id: word.id, word_answer_id: 0
+      @lesson.lesson_words.build word_id: word.id, word_answer_id: nil
     end
     if @lesson.save
-      redirect_to @lesson
+      redirect_to edit_lesson_path @lesson
     else
       redirect_to @lesson.category
     end
@@ -20,6 +21,7 @@ class LessonsController < ApplicationController
 
   def show
     @lesson = Lesson.find params[:id]
+    @num_leanred = LessonWord.num_learned_by_lesson(@lesson).count
   end
   
   def edit
@@ -29,10 +31,9 @@ class LessonsController < ApplicationController
   def update
     @lesson = Lesson.find params[:id]
     if @lesson.update_attributes lesson_params
-      flash[:sucess] = "Lesson updated"
       redirect_to @lesson
     else
-      flash[:error] = "Lesson wa not success full update"
+      flash[:error] = "Lesson was not success full update"
       render "show"
     end
   end
