@@ -3,7 +3,8 @@
 <div class = "col-md-12">
     <% @lessons.each do |lesson| %>
         <div class = "col-md-6">
-            <%= link_to lesson.name, lesson, class: "btn btn-default well" %>
+            <%= link_to lesson.created_at.strftime("Started at %I:%M%p on %m/%d/%Y"),
+                lesson, class: "btn btn-default well" %>
         </div>
     <% end %>
 </div>

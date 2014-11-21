@@ -6,6 +6,7 @@ class StaticPagesController < ApplicationController
   
   def home
     @user = current_user
+    @activities = @user.activities.order("DATE(created_at) DESC").limit 20
   end
    
   def about

@@ -1,8 +1,9 @@
-<% provide(:title, @lesson.name)%>
+<% provide(:title, @lesson.created_at)%>
 
 <div class = "row well">
     <h3>
-        <%= link_to @lesson.name, @lesson, class: "btn btn-info",
+        <%= link_to @lesson.created_at.strftime("Started at %I:%M%p on %m/%d/%Y"),
+            @lesson, class: "btn btn-info",
             title: "Click here to see you result"%>
     </h3>
 </div>

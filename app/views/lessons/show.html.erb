@@ -1,5 +1,6 @@
 <div class = "row well">
-    <h3><%= link_to @lesson.name, edit_lesson_path(@lesson), class: "btn btn-warning",
+    <h3><%= link_to @lesson.created_at.strftime("Started at %I:%M%p on %m/%d/%Y"),
+        edit_lesson_path(@lesson), class: "btn btn-warning",
         title: "Click here to restart lesson" %></h3>
     <i>You learned <%= @num_leanred %>/20 words in this lesson!</i>
 </div>

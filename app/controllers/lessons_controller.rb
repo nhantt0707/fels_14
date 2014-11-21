@@ -7,7 +7,7 @@ class LessonsController < ApplicationController
   
   def new
     @lesson = Lesson.new(category_id: params[:category_id],
-      user_id: current_user.id, name: Faker::Lorem.sentence)
+      user_id: current_user.id)
     @words = @lesson.category.words.order("RAND()").limit 20
     @words.each do |word|
       @lesson.lesson_words.build word_id: word.id, word_answer_id: nil
